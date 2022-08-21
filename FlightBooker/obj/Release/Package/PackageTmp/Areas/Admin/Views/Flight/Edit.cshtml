@@ -1,0 +1,221 @@
+﻿@model FlightBooker.DAL.Flight
+@using FlightBooker.DAL;
+@using FlightBooker.Buisness;
+@using System.Collections; 
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit Flight Details</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+<div>
+	@{
+		FlightRepository flightRepo = new FlightRepository();
+		AirlineRepository airlineRepo = new AirlineRepository();
+		AirportRepository airportRepo = new AirportRepository();
+		AircraftRepository aircraftRepo = new AircraftRepository();
+		List<Airline> airlines = airlineRepo.GetAllAirlines();
+		List<Airport> airports = airportRepo.GetAllAirports();
+		List<Aircraft> aircrafts = aircraftRepo.GetAllAircrafts();
+	}
+</div>
+<div class="form-horizontal">
+	<hr />
+	@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+	@Html.HiddenFor(model => model.id)
+
+	<div class="form-group">
+		<label class="control-label col-md-2"> Flight Number </label>
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.flight_number, new { htmlAttributes = new { @class = "form-control" } })
+			@Html.ValidationMessageFor(model => model.flight_number, "", new { @class = "text-danger" })
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="control-label col-md-2"> Origin </label>
+		<div class="col-md-10">
+
+			@{List<string> origins = new List<string>();
+				origins.Add(null);
+				}
+
+			@foreach (var item in airports)
+			{
+				var origin = item.id;
+				origins.Add(origin.ToString());
+			}
+
+			@Html.DropDownListFor(model => model.origin, new SelectList(origins, "Text"),
+			  htmlAttributes: new { @class = "form-control" })
+			@Html.ValidationMessageFor(model => model.origin, "", new { @class = "text-danger" })
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="control-label col-md-2"> Destination </label>
+		<div class="col-md-10">
+			@{List<string> destinations = new List<string>();
+				destinations.Add(null);
+				}
+			@foreach (var item in airports)
+			{
+				var destination = item.id;
+				destinations.Add(destination.ToString());
+			}
+
+			@Html.DropDownListFor(model => model.destination, new SelectList(destinations, "Text"),
+						 htmlAttributes: new { @class = "form-control" })
+			@Html.ValidationMessageFor(model => model.destination, "", new { @class = "text-danger" })
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="control-label col-md-2"> Flight Date </label>
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.flight_date, new { htmlAttributes = new { @class = "form-control" } })
+			@Html.ValidationMessageFor(model => model.flight_date, "", new { @class = "text-danger" })
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="control-label col-md-2"> Duration </label>
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.duration, new { htmlAttributes = new { @class = "form-control" } })
+			@Html.ValidationMessageFor(model => model.duration, "", new { @class = "text-danger" })
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="control-label col-md-2"> Airport Id </label>
+		<div class="col-md-10">
+			@{List<string> airportsNames = new List<string>();
+				airportsNames.Add(null);
+				}
+			@foreach (var item in airports)
+			{
+				var airport = item.id;
+				airportsNames.Add(airport.ToString());
+			}
+
+
+			@Html.DropDownListFor(model => model.airport_id, new SelectList(airportsNames, "Text"),
+						 htmlAttributes: new { @class = "form-control" })
+			@Html.ValidationMessageFor(model => model.airport_id, "", new { @class = "text-danger" })
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="control-label col-md-2"> Airline Id </label>
+		<div class="col-md-10">
+			@{List<string> airlineNames = new List<string>();
+				airlineNames.Add(null);
+				}
+
+			@foreach (var item in airlines)
+			{
+				var airline = item.id;
+				airlineNames.Add(airline.ToString());
+			}
+			@Html.DropDownListFor(model => model.airline_id, new SelectList(airlineNames, "Text"),
+						 htmlAttributes: new { @class = "form-control" })
+			@Html.ValidationMessageFor(model => model.airline_id, "", new { @class = "text-danger" })
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="control-label col-md-2"> Aircraft Id </label>
+		<div class="col-md-10">
+			@{List<string> aircraftNames = new List<string>();
+				aircraftNames.Add(null);
+				}
+
+			@foreach (var item in aircrafts)
+			{
+				var aircraft = item.id;
+				aircraftNames.Add(aircraft.ToString());
+			}
+			@Html.DropDownListFor(model => model.aircraft_id, new SelectList(aircraftNames, "Text"),
+						 htmlAttributes: new { @class = "form-control" })
+			@Html.ValidationMessageFor(model => model.aircraft_id, "", new { @class = "text-danger" })
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="control-label col-md-2"> Stopover Duration </label>
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.stopover_duration, new { htmlAttributes = new { @class = "form-control" } })
+			@Html.ValidationMessageFor(model => model.stopover_duration, "", new { @class = "text-danger" })
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="control-label col-md-2"> VIA </label>
+		<div class="col-md-10">
+			@{List<string> viaNames = new List<string>();
+				viaNames.Add(null);
+				}
+			@foreach (var item in airports)
+			{
+				var via = item.id;
+				viaNames.Add(via.ToString());
+			}
+
+
+			@Html.DropDownListFor(model => model.via, new SelectList(viaNames, "Text"),
+						 htmlAttributes: new { @class = "form-control" })
+			@Html.ValidationMessageFor(model => model.via, "", new { @class = "text-danger" })
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="control-label col-md-2"> Seats No </label>
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.available_seats, new { htmlAttributes = new { @class = "form-control" } })
+			@Html.ValidationMessageFor(model => model.available_seats, "", new { @class = "text-danger" })
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="control-label col-md-2"> Buggage Weight </label>
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.allowedd_buggage_weight, new { htmlAttributes = new { @class = "form-control" } })
+			@Html.ValidationMessageFor(model => model.allowedd_buggage_weight, "", new { @class = "text-danger" })
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="control-label col-md-2"> Economy Price </label>
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.econ_price, new { htmlAttributes = new { @class = "form-control" } })
+			@Html.ValidationMessageFor(model => model.econ_price, "", new { @class = "text-danger" })
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="control-label col-md-2"> Business Price </label>
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.bus_price, new { htmlAttributes = new { @class = "form-control" } })
+			@Html.ValidationMessageFor(model => model.bus_price, "", new { @class = "text-danger" })
+		</div>
+	</div>
+
+	<div class="form-group">
+		<div class="col-md-offset-2 col-md-10">
+			<input type="submit" value="Save" class="btn btn-default" />
+		</div>
+	</div>
+	<p class="btn btn-default">@Html.ActionLink("Back To Flights Details", "Index", "Flight")</p>
+</div>
+}
+
+@*<div>
+	@{ 
+		Flight flight = Model;
+	}
+	@Html.ActionLink("Save", "Save", flight)
+</div>*@

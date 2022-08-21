@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultValue="Data Source=.;&#xD;&#xA;              Initial Catalog=FlightBookerDb;           &#xD;&#xA;              Integrated Security=False;           &#xD;&#xA;              User Id=FlightBookerAdmin;           &#xD;&#xA;              Password=1234" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Admin\\Documents\\Year4\ Semester1\\IT\ Project\\ProjectSourceCodeWithAuthentication\\FlightBooker\\FlightBooker\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+  <parameter name="FlightBookerDb-Web.config Connection String" description="FlightBookerDb Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/FlightBookerModel.csdl|res://*/FlightBookerModel.ssdl|res://*/FlightBookerModel.msl;&#xD;&#xA;         provider=System.Data.SqlClient;&#xD;&#xA;         provider connection string=&quot;&#xD;&#xA;         Data Source=.;   &#xD;&#xA;         Initial Catalog=FlightBookerDb;   &#xD;&#xA;         User Id=FlightBookerAdmin;           &#xD;&#xA;          Password=1234;&#xD;&#xA;         Integrated Security=True;  &#xD;&#xA;         MultipleActiveResultSets=True;  &#xD;&#xA;         App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Admin\\Documents\\Year4\ Semester1\\IT\ Project\\ProjectSourceCodeWithAuthentication\\FlightBooker\\FlightBooker\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='FlightBookerDb']/@connectionString" />
+  </parameter>
+</parameters>

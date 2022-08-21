@@ -1,0 +1,14 @@
+C:\Users\Admin\Documents\Year4 Semester1\IT Project\ProjectSourceCodeWithAuthentication\FlightBooker\FlightBooker.DAL\bin\Debug\FlightBooker.DAL.dll.config
+C:\Users\Admin\Documents\Year4 Semester1\IT Project\ProjectSourceCodeWithAuthentication\FlightBooker\FlightBooker.DAL\bin\Debug\FlightBooker.DAL.dll
+C:\Users\Admin\Documents\Year4 Semester1\IT Project\ProjectSourceCodeWithAuthentication\FlightBooker\FlightBooker.DAL\bin\Debug\FlightBooker.DAL.pdb
+C:\Users\Admin\Documents\Year4 Semester1\IT Project\ProjectSourceCodeWithAuthentication\FlightBooker\FlightBooker.DAL\bin\Debug\EntityFramework.dll
+C:\Users\Admin\Documents\Year4 Semester1\IT Project\ProjectSourceCodeWithAuthentication\FlightBooker\FlightBooker.DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Admin\Documents\Year4 Semester1\IT Project\ProjectSourceCodeWithAuthentication\FlightBooker\FlightBooker.DAL\bin\Debug\EntityFramework.xml
+C:\Users\Admin\Documents\Year4 Semester1\IT Project\ProjectSourceCodeWithAuthentication\FlightBooker\FlightBooker.DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Admin\Documents\Year4 Semester1\IT Project\ProjectSourceCodeWithAuthentication\FlightBooker\FlightBooker.DAL\obj\Debug\FlightBooker.DAL.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Documents\Year4 Semester1\IT Project\ProjectSourceCodeWithAuthentication\FlightBooker\FlightBooker.DAL\obj\Debug\FlightBooker.DAL.csproj.CopyComplete
+C:\Users\Admin\Documents\Year4 Semester1\IT Project\ProjectSourceCodeWithAuthentication\FlightBooker\FlightBooker.DAL\obj\Debug\FlightBooker.DAL.dll
+C:\Users\Admin\Documents\Year4 Semester1\IT Project\ProjectSourceCodeWithAuthentication\FlightBooker\FlightBooker.DAL\obj\Debug\FlightBooker.DAL.pdb
+C:\Users\Admin\Documents\Year4 Semester1\IT Project\ProjectSourceCodeWithAuthentication\FlightBooker\FlightBooker.DAL\obj\Debug\FlightBooker.DAL.csproj.AssemblyReference.cache
+C:\Users\Admin\Documents\Year4 Semester1\IT Project\ProjectSourceCodeWithAuthentication\FlightBooker\FlightBooker.DAL\bin\Debug\System.Data.SqlClient.dll
+C:\Users\Admin\Documents\Year4 Semester1\IT Project\ProjectSourceCodeWithAuthentication\FlightBooker\FlightBooker.DAL\bin\Debug\System.Data.SqlClient.xml

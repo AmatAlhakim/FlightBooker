@@ -1,0 +1,304 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FlightBookerDbModelStoreContainer" CdmEntityContainer="FlightBookerDb">
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="FlightBookerDbModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="FlightBookerDbModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="FlightBookerDbModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="FlightBookerDbModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FlightBookerDbModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="FlightBookerDbModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FlightBookerDbModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="FlightBookerDbModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="FlightBookerDbModel.Store.sp_upgraddiagrams" />
+    <EntitySetMapping Name="C__MigrationHistory">
+      <EntityTypeMapping TypeName="FlightBookerDbModel.C__MigrationHistory">
+        <MappingFragment StoreEntitySet="__MigrationHistory">
+          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Aircraft">
+      <EntityTypeMapping TypeName="FlightBookerDbModel.Aircraft">
+        <MappingFragment StoreEntitySet="Aircraft">
+          <ScalarProperty Name="icao" ColumnName="icao" />
+          <ScalarProperty Name="aircraft_name" ColumnName="aircraft_name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Airlines">
+      <EntityTypeMapping TypeName="FlightBookerDbModel.Airline">
+        <MappingFragment StoreEntitySet="Airline">
+          <ScalarProperty Name="icao" ColumnName="icao" />
+          <ScalarProperty Name="country_id" ColumnName="country_id" />
+          <ScalarProperty Name="airline_name" ColumnName="airline_name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Airports">
+      <EntityTypeMapping TypeName="FlightBookerDbModel.Airport">
+        <MappingFragment StoreEntitySet="Airport">
+          <ScalarProperty Name="icao" ColumnName="icao" />
+          <ScalarProperty Name="country_id" ColumnName="country_id" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="airport_name" ColumnName="airport_name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetRoles">
+      <EntityTypeMapping TypeName="FlightBookerDbModel.AspNetRole">
+        <MappingFragment StoreEntitySet="AspNetRoles">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserClaims">
+      <EntityTypeMapping TypeName="FlightBookerDbModel.AspNetUserClaim">
+        <MappingFragment StoreEntitySet="AspNetUserClaims">
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserLogins">
+      <EntityTypeMapping TypeName="FlightBookerDbModel.AspNetUserLogin">
+        <MappingFragment StoreEntitySet="AspNetUserLogins">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="FlightBookerDbModel.AspNetUser">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Countries">
+      <EntityTypeMapping TypeName="FlightBookerDbModel.Country">
+        <MappingFragment StoreEntitySet="Country">
+          <ScalarProperty Name="icao" ColumnName="icao" />
+          <ScalarProperty Name="country_name" ColumnName="country_name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="FlightBookerDbModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Flights">
+      <EntityTypeMapping TypeName="FlightBookerDbModel.Flight">
+        <MappingFragment StoreEntitySet="Flight">
+          <ScalarProperty Name="bus_price" ColumnName="bus_price" />
+          <ScalarProperty Name="econ_price" ColumnName="econ_price" />
+          <ScalarProperty Name="allowedd_buggage_weight" ColumnName="allowedd_buggage_weight" />
+          <ScalarProperty Name="available_seats" ColumnName="available_seats" />
+          <ScalarProperty Name="via" ColumnName="via" />
+          <ScalarProperty Name="stopover_duration" ColumnName="stopover_duration" />
+          <ScalarProperty Name="aircraft_id" ColumnName="aircraft_id" />
+          <ScalarProperty Name="airline_id" ColumnName="airline_id" />
+          <ScalarProperty Name="airport_id" ColumnName="airport_id" />
+          <ScalarProperty Name="duration" ColumnName="duration" />
+          <ScalarProperty Name="flight_date" ColumnName="flight_date" />
+          <ScalarProperty Name="destination" ColumnName="destination" />
+          <ScalarProperty Name="origin" ColumnName="origin" />
+          <ScalarProperty Name="flight_number" ColumnName="flight_number" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Passenger_Reservation">
+      <EntityTypeMapping TypeName="FlightBookerDbModel.Passenger_Reservation">
+        <MappingFragment StoreEntitySet="Passenger_Reservation">
+          <ScalarProperty Name="reservation_id" ColumnName="reservation_id" />
+          <ScalarProperty Name="passenger_id" ColumnName="passenger_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Payments">
+      <EntityTypeMapping TypeName="FlightBookerDbModel.Payment">
+        <MappingFragment StoreEntitySet="Payment">
+          <ScalarProperty Name="card_type" ColumnName="card_type" />
+          <ScalarProperty Name="card_number" ColumnName="card_number" />
+          <ScalarProperty Name="holder_name" ColumnName="holder_name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reservations">
+      <EntityTypeMapping TypeName="FlightBookerDbModel.Reservation">
+        <MappingFragment StoreEntitySet="Reservation">
+          <ScalarProperty Name="num_of_passengers" ColumnName="num_of_passengers" />
+          <ScalarProperty Name="reservation_status" ColumnName="reservation_status" />
+          <ScalarProperty Name="reservation_date" ColumnName="reservation_date" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reservation_History">
+      <EntityTypeMapping TypeName="FlightBookerDbModel.Reservation_History">
+        <MappingFragment StoreEntitySet="Reservation_History">
+          <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+          <ScalarProperty Name="reservation_id" ColumnName="reservation_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="FlightBookerDbModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="AspNetUserRoles" TypeName="FlightBookerDbModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+      <EndProperty Name="AspNetUser">
+        <ScalarProperty Name="Id" ColumnName="UserId" />
+      </EndProperty>
+      <EndProperty Name="AspNetRole">
+        <ScalarProperty Name="Id" ColumnName="RoleId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="Sorts">
+      <EntityTypeMapping TypeName="FlightBookerDbModel.Sort">
+        <MappingFragment StoreEntitySet="Sort">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="sortBy" ColumnName="sortBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Flight_Reservation">
+      <EntityTypeMapping TypeName="FlightBookerDbModel.Flight_Reservation">
+        <MappingFragment StoreEntitySet="Flight_Reservation">
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="flight_id" ColumnName="flight_id" />
+          <ScalarProperty Name="reservation_id" ColumnName="reservation_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Payment_Details">
+      <EntityTypeMapping TypeName="FlightBookerDbModel.Payment_Details">
+        <MappingFragment StoreEntitySet="Payment_Details">
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="flight_reservation_id" ColumnName="flight_reservation_id" />
+          <ScalarProperty Name="payment_id" ColumnName="payment_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClassTypes">
+      <EntityTypeMapping TypeName="FlightBookerDbModel.ClassType">
+        <MappingFragment StoreEntitySet="ClassType">
+          <ScalarProperty Name="classType1" ColumnName="classType" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Passengers">
+      <EntityTypeMapping TypeName="FlightBookerDbModel.Passenger">
+        <MappingFragment StoreEntitySet="Passenger">
+          <ScalarProperty Name="Age_Category" ColumnName="Age_Category" />
+          <ScalarProperty Name="passport_number" ColumnName="passport_number" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Searches">
+      <EntityTypeMapping TypeName="FlightBookerDbModel.Search">
+        <MappingFragment StoreEntitySet="Search">
+          <ScalarProperty Name="classType" ColumnName="classType" />
+          <ScalarProperty Name="shortBy_Id" ColumnName="shortBy_Id" />
+          <ScalarProperty Name="tripType" ColumnName="tripType" />
+          <ScalarProperty Name="flightType" ColumnName="flightType" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="destination" ColumnName="destination" />
+          <ScalarProperty Name="origin" ColumnName="origin" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReportViews">
+      <EntityTypeMapping TypeName="FlightBookerDbModel.ReportView">
+        <MappingFragment StoreEntitySet="ReportView">
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Reservation_ID" ColumnName="Reservation ID" />
+          <ScalarProperty Name="Flight_No" ColumnName="Flight No" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Itineraries">
+      <EntityTypeMapping TypeName="FlightBookerDbModel.Itinerary">
+        <MappingFragment StoreEntitySet="Itinerary">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Currency" ColumnName="Currency" />
+          <ScalarProperty Name="To_Date" ColumnName="To Date" />
+          <ScalarProperty Name="From_Date" ColumnName="From Date" />
+          <ScalarProperty Name="Total_Cost" ColumnName="Total Cost" />
+          <ScalarProperty Name="Special_Needs" ColumnName="Special Needs" />
+          <ScalarProperty Name="Flyer_Number" ColumnName="Flyer Number" />
+          <ScalarProperty Name="Ticket_Number" ColumnName="Ticket Number" />
+          <ScalarProperty Name="Passenger_Name" ColumnName="Passenger Name" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Aircraft" ColumnName="Aircraft" />
+          <ScalarProperty Name="To" ColumnName="To" />
+          <ScalarProperty Name="From" ColumnName="From" />
+          <ScalarProperty Name="Flight" ColumnName="Flight" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

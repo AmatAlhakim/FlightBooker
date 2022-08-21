@@ -1,0 +1,659 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FlightBookerDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+    <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Aircraft">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="aircraft_name" Type="varchar" MaxLength="150" />
+    <Property Name="icao" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Airline">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="airline_name" Type="varchar" MaxLength="150" />
+    <Property Name="country_id" Type="varchar" MaxLength="50" />
+    <Property Name="icao" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Airport">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="airport_name" Type="varchar" MaxLength="150" />
+    <Property Name="city" Type="varchar" MaxLength="100" />
+    <Property Name="country_id" Type="varchar" MaxLength="50" />
+    <Property Name="icao" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ClaimType" Type="nvarchar(max)" />
+    <Property Name="ClaimValue" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" />
+    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ClassType">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="classType" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="country_name" Type="varchar" MaxLength="50" />
+    <Property Name="icao" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="first_name" Type="varchar" MaxLength="100" />
+    <Property Name="last_name" Type="varchar" MaxLength="100" />
+    <Property Name="email" Type="varchar" MaxLength="50" />
+    <Property Name="password" Type="nvarchar(max)" />
+    <Property Name="user_id" Type="nvarchar" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="Flight">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="flight_number" Type="int" />
+    <Property Name="origin" Type="varchar" MaxLength="50" />
+    <Property Name="destination" Type="varchar" MaxLength="50" />
+    <Property Name="flight_date" Type="datetime" />
+    <Property Name="duration" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="airport_id" Type="varchar" MaxLength="50" />
+    <Property Name="airline_id" Type="varchar" MaxLength="50" />
+    <Property Name="aircraft_id" Type="varchar" MaxLength="50" />
+    <Property Name="stopover_duration" Type="decimal" Precision="3" Scale="2" />
+    <Property Name="via" Type="varchar" MaxLength="50" />
+    <Property Name="available_seats" Type="int" />
+    <Property Name="allowedd_buggage_weight" Type="int" />
+    <Property Name="econ_price" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="bus_price" Type="decimal" Precision="8" Scale="2" />
+  </EntityType>
+  <EntityType Name="Flight_Reservation">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="reservation_id" Type="int" />
+    <Property Name="flight_id" Type="int" />
+    <Property Name="price" Type="decimal" Precision="18" Scale="3" />
+  </EntityType>
+  <EntityType Name="Itinerary">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="Flight" Type="varchar" MaxLength="500" />
+    <Property Name="From" Type="varchar" MaxLength="500" />
+    <Property Name="To" Type="varchar" MaxLength="500" />
+    <Property Name="Aircraft" Type="varchar" MaxLength="500" />
+    <Property Name="Status" Type="varchar" MaxLength="500" />
+    <Property Name="Passenger Name" Type="varchar" MaxLength="500" />
+    <Property Name="Ticket Number" Type="varchar" MaxLength="500" />
+    <Property Name="Flyer Number" Type="varchar" MaxLength="500" />
+    <Property Name="Special Needs" Type="varchar" MaxLength="500" />
+    <Property Name="Total Cost" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="From Date" Type="datetime" />
+    <Property Name="To Date" Type="datetime" />
+    <Property Name="Currency" Type="varchar" MaxLength="50" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Passenger">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="first_name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="last_name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="phone" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="passport_number" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Age_Category" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Passenger_Reservation">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="passenger_id" Type="int" />
+    <Property Name="reservation_id" Type="int" />
+  </EntityType>
+  <EntityType Name="Payment">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="holder_name" Type="varchar" MaxLength="150" />
+    <Property Name="card_number" Type="varchar" MaxLength="50" />
+    <Property Name="card_type" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Payment_Details">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="payment_id" Type="int" />
+    <Property Name="flight_reservation_id" Type="int" />
+    <Property Name="amount" Type="decimal" Precision="18" Scale="3" />
+  </EntityType>
+  <EntityType Name="Reservation">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="reservation_date" Type="datetime" />
+    <Property Name="reservation_status" Type="varchar" MaxLength="50" />
+    <Property Name="num_of_passengers" Type="int" />
+  </EntityType>
+  <EntityType Name="Reservation_History">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="reservation_id" Type="int" />
+    <Property Name="customer_id" Type="int" />
+  </EntityType>
+  <EntityType Name="Search">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="origin" Type="varchar" MaxLength="150" />
+    <Property Name="destination" Type="varchar" MaxLength="150" />
+    <Property Name="date" Type="datetime" />
+    <Property Name="flightType" Type="nvarchar" MaxLength="50" />
+    <Property Name="tripType" Type="nvarchar" MaxLength="50" />
+    <Property Name="shortBy_Id" Type="varchar" MaxLength="50" />
+    <Property Name="classType" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sort">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="sortBy" Type="varchar" MaxLength="50" />
+    <Property Name="id" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'FlightBookerDb.dbo.ReportView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ReportView">
+    <Key>
+      <PropertyRef Name="Reservation ID" />
+    </Key>
+    <Property Name="Flight No" Type="int" />
+    <Property Name="Reservation ID" Type="int" Nullable="false" />
+    <Property Name="Price" Type="decimal" Precision="18" Scale="3" />
+  </EntityType>
+  <Association Name="FK_Airline_Country">
+    <End Role="Country" Type="Self.Country" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Airline" Type="Self.Airline" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Airline">
+        <PropertyRef Name="country_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Airport_Country">
+    <End Role="Country" Type="Self.Country" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Airport" Type="Self.Airport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Airport">
+        <PropertyRef Name="country_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Flight_Aircraft">
+    <End Role="Aircraft" Type="Self.Aircraft" Multiplicity="0..1" />
+    <End Role="Flight" Type="Self.Flight" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Aircraft">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Flight">
+        <PropertyRef Name="aircraft_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Flight_Airline">
+    <End Role="Airline" Type="Self.Airline" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Flight" Type="Self.Flight" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Airline">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Flight">
+        <PropertyRef Name="airline_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Flight_Airport">
+    <End Role="Airport" Type="Self.Airport" Multiplicity="0..1" />
+    <End Role="Flight" Type="Self.Flight" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Airport">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Flight">
+        <PropertyRef Name="airport_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Flight_Reservation_Flight">
+    <End Role="Flight" Type="Self.Flight" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Flight_Reservation" Type="Self.Flight_Reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Flight">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Flight_Reservation">
+        <PropertyRef Name="flight_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Flight_Reservation_Reservation">
+    <End Role="Reservation" Type="Self.Reservation" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Flight_Reservation" Type="Self.Flight_Reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Reservation">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Flight_Reservation">
+        <PropertyRef Name="reservation_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Passenger_Reservation_Passenger">
+    <End Role="Passenger" Type="Self.Passenger" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Passenger_Reservation" Type="Self.Passenger_Reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Passenger">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Passenger_Reservation">
+        <PropertyRef Name="passenger_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Passenger_Reservation_Reservation">
+    <End Role="Reservation" Type="Self.Reservation" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Passenger_Reservation" Type="Self.Passenger_Reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Reservation">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Passenger_Reservation">
+        <PropertyRef Name="reservation_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Payment_Details_Flight_Reservation">
+    <End Role="Flight_Reservation" Type="Self.Flight_Reservation" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Payment_Details" Type="Self.Payment_Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Flight_Reservation">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Payment_Details">
+        <PropertyRef Name="flight_reservation_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Payment_Details_Payment">
+    <End Role="Payment" Type="Self.Payment" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Payment_Details" Type="Self.Payment_Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Payment">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Payment_Details">
+        <PropertyRef Name="payment_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reservation_History_Customer">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Reservation_History" Type="Self.Reservation_History" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Reservation_History">
+        <PropertyRef Name="customer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reservation_History_Reservation">
+    <End Role="Reservation" Type="Self.Reservation" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Reservation_History" Type="Self.Reservation_History" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Reservation">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Reservation_History">
+        <PropertyRef Name="reservation_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Search_ClassType">
+    <End Role="ClassType" Type="Self.ClassType" Multiplicity="1" />
+    <End Role="Search" Type="Self.Search" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClassType">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Search">
+        <PropertyRef Name="classType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Search_Sort">
+    <End Role="Sort" Type="Self.Sort" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Search" Type="Self.Search" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sort">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Search">
+        <PropertyRef Name="shortBy_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="FlightBookerDbModelStoreContainer">
+    <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Aircraft" EntityType="Self.Aircraft" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Airline" EntityType="Self.Airline" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Airport" EntityType="Self.Airport" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ClassType" EntityType="Self.ClassType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Flight" EntityType="Self.Flight" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Flight_Reservation" EntityType="Self.Flight_Reservation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Itinerary" EntityType="Self.Itinerary" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Passenger" EntityType="Self.Passenger" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Passenger_Reservation" EntityType="Self.Passenger_Reservation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Payment_Details" EntityType="Self.Payment_Details" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Reservation" EntityType="Self.Reservation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Reservation_History" EntityType="Self.Reservation_History" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Search" EntityType="Self.Search" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sort" EntityType="Self.Sort" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ReportView" EntityType="Self.ReportView" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ReportView].[Flight No] AS [Flight No], 
+    [ReportView].[Reservation ID] AS [Reservation ID], 
+    [ReportView].[Price] AS [Price]
+    FROM [dbo].[ReportView] AS [ReportView]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Airline_Country" Association="Self.FK_Airline_Country">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="Airline" EntitySet="Airline" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Airport_Country" Association="Self.FK_Airport_Country">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="Airport" EntitySet="Airport" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Flight_Aircraft" Association="Self.FK_Flight_Aircraft">
+      <End Role="Aircraft" EntitySet="Aircraft" />
+      <End Role="Flight" EntitySet="Flight" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Flight_Airline" Association="Self.FK_Flight_Airline">
+      <End Role="Airline" EntitySet="Airline" />
+      <End Role="Flight" EntitySet="Flight" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Flight_Airport" Association="Self.FK_Flight_Airport">
+      <End Role="Airport" EntitySet="Airport" />
+      <End Role="Flight" EntitySet="Flight" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Flight_Reservation_Flight" Association="Self.FK_Flight_Reservation_Flight">
+      <End Role="Flight" EntitySet="Flight" />
+      <End Role="Flight_Reservation" EntitySet="Flight_Reservation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Flight_Reservation_Reservation" Association="Self.FK_Flight_Reservation_Reservation">
+      <End Role="Reservation" EntitySet="Reservation" />
+      <End Role="Flight_Reservation" EntitySet="Flight_Reservation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Passenger_Reservation_Passenger" Association="Self.FK_Passenger_Reservation_Passenger">
+      <End Role="Passenger" EntitySet="Passenger" />
+      <End Role="Passenger_Reservation" EntitySet="Passenger_Reservation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Passenger_Reservation_Reservation" Association="Self.FK_Passenger_Reservation_Reservation">
+      <End Role="Reservation" EntitySet="Reservation" />
+      <End Role="Passenger_Reservation" EntitySet="Passenger_Reservation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Payment_Details_Flight_Reservation" Association="Self.FK_Payment_Details_Flight_Reservation">
+      <End Role="Flight_Reservation" EntitySet="Flight_Reservation" />
+      <End Role="Payment_Details" EntitySet="Payment_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Payment_Details_Payment" Association="Self.FK_Payment_Details_Payment">
+      <End Role="Payment" EntitySet="Payment" />
+      <End Role="Payment_Details" EntitySet="Payment_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reservation_History_Customer" Association="Self.FK_Reservation_History_Customer">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Reservation_History" EntitySet="Reservation_History" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reservation_History_Reservation" Association="Self.FK_Reservation_History_Reservation">
+      <End Role="Reservation" EntitySet="Reservation" />
+      <End Role="Reservation_History" EntitySet="Reservation_History" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Search_ClassType" Association="Self.FK_Search_ClassType">
+      <End Role="ClassType" EntitySet="ClassType" />
+      <End Role="Search" EntitySet="Search" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Search_Sort" Association="Self.FK_Search_Sort">
+      <End Role="Sort" EntitySet="Sort" />
+      <End Role="Search" EntitySet="Search" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,19 @@
+﻿
+
+Attempting to gather dependency information for package 'EntityFramework.6.4.4' with respect to project 'FlightBooker', targeting '.NETFramework,Version=v4.7.2'
+Gathering dependency information took 1.84 min
+Attempting to resolve dependencies for package 'EntityFramework.6.4.4' with DependencyBehavior 'Lowest'
+Resolving dependency information took 0 ms
+Resolving actions to install package 'EntityFramework.6.4.4'
+Resolved actions to install package 'EntityFramework.6.4.4'
+Removed package 'EntityFramework.6.2.0' from 'packages.config'
+Successfully uninstalled 'EntityFramework.6.2.0' from FlightBooker
+Adding package 'EntityFramework.6.4.4' to folder 'C:\Users\Admin\Documents\Year4 Semester1\IT Project\ProjectSourceCodeWithAuthentication\FlightBooker\packages'
+Added package 'EntityFramework.6.4.4' to folder 'C:\Users\Admin\Documents\Year4 Semester1\IT Project\ProjectSourceCodeWithAuthentication\FlightBooker\packages'
+Added package 'EntityFramework.6.4.4' to 'packages.config'
+Executing script file 'C:\Users\Admin\Documents\Year4 Semester1\IT Project\ProjectSourceCodeWithAuthentication\FlightBooker\packages\EntityFramework.6.4.4\tools\init.ps1'...
+Successfully installed 'EntityFramework 6.4.4' to FlightBooker
+Executing nuget actions took 25.67 sec
+Time Elapsed: 00:02:19.7296504
+========== Finished ==========
+

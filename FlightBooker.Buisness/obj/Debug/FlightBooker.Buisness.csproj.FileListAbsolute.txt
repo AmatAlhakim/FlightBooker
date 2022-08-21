@@ -1,0 +1,17 @@
+C:\Users\Admin\Documents\Year4 Semester1\IT Project\ProjectSourceCodeWithAuthentication\FlightBooker\FlightBooker.Buisness\bin\Debug\FlightBooker.Buisness.dll.config
+C:\Users\Admin\Documents\Year4 Semester1\IT Project\ProjectSourceCodeWithAuthentication\FlightBooker\FlightBooker.Buisness\bin\Debug\FlightBooker.Buisness.dll
+C:\Users\Admin\Documents\Year4 Semester1\IT Project\ProjectSourceCodeWithAuthentication\FlightBooker\FlightBooker.Buisness\bin\Debug\FlightBooker.Buisness.pdb
+C:\Users\Admin\Documents\Year4 Semester1\IT Project\ProjectSourceCodeWithAuthentication\FlightBooker\FlightBooker.Buisness\bin\Debug\EntityFramework.dll
+C:\Users\Admin\Documents\Year4 Semester1\IT Project\ProjectSourceCodeWithAuthentication\FlightBooker\FlightBooker.Buisness\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Admin\Documents\Year4 Semester1\IT Project\ProjectSourceCodeWithAuthentication\FlightBooker\FlightBooker.Buisness\bin\Debug\FlightBooker.DAL.dll
+C:\Users\Admin\Documents\Year4 Semester1\IT Project\ProjectSourceCodeWithAuthentication\FlightBooker\FlightBooker.Buisness\bin\Debug\FlightBooker.DAL.pdb
+C:\Users\Admin\Documents\Year4 Semester1\IT Project\ProjectSourceCodeWithAuthentication\FlightBooker\FlightBooker.Buisness\bin\Debug\FlightBooker.DAL.dll.config
+C:\Users\Admin\Documents\Year4 Semester1\IT Project\ProjectSourceCodeWithAuthentication\FlightBooker\FlightBooker.Buisness\bin\Debug\EntityFramework.xml
+C:\Users\Admin\Documents\Year4 Semester1\IT Project\ProjectSourceCodeWithAuthentication\FlightBooker\FlightBooker.Buisness\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Admin\Documents\Year4 Semester1\IT Project\ProjectSourceCodeWithAuthentication\FlightBooker\FlightBooker.Buisness\obj\Debug\FlightBooker.Buisness.csproj.AssemblyReference.cache
+C:\Users\Admin\Documents\Year4 Semester1\IT Project\ProjectSourceCodeWithAuthentication\FlightBooker\FlightBooker.Buisness\obj\Debug\FlightBooker.Buisness.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Documents\Year4 Semester1\IT Project\ProjectSourceCodeWithAuthentication\FlightBooker\FlightBooker.Buisness\obj\Debug\FlightBooker.Buisness.csproj.CopyComplete
+C:\Users\Admin\Documents\Year4 Semester1\IT Project\ProjectSourceCodeWithAuthentication\FlightBooker\FlightBooker.Buisness\obj\Debug\FlightBooker.Buisness.dll
+C:\Users\Admin\Documents\Year4 Semester1\IT Project\ProjectSourceCodeWithAuthentication\FlightBooker\FlightBooker.Buisness\obj\Debug\FlightBooker.Buisness.pdb
+C:\Users\Admin\Documents\Year4 Semester1\IT Project\ProjectSourceCodeWithAuthentication\FlightBooker\FlightBooker.Buisness\bin\Debug\System.Data.SqlClient.dll
+C:\Users\Admin\Documents\Year4 Semester1\IT Project\ProjectSourceCodeWithAuthentication\FlightBooker\FlightBooker.Buisness\bin\Debug\System.Data.SqlClient.xml

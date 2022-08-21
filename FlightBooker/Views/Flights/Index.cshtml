@@ -1,0 +1,148 @@
+﻿@model FlightBooker.DAL.Search
+@using FlightBooker.DAL
+@using FlightBooker.Buisness
+
+@{
+	ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 style="color: darkblue">Search</h1>
+<h4 style="color: blue">Search For The Best Matches Flights Of Your Choice By Selecting Options From The Drop Down Lists</h4>
+<hr style="border-block-color: darkblue" />
+
+@using (Html.BeginForm("Search", "Flights", FormMethod.Post, new { onsubmit = "onFormSubmit()", @class = "form-horizontal", enctype = "multipart/form-data" }))
+{
+	@Html.AntiForgeryToken()
+	<div class="row" style="margin-bottom: 80px; margin-top: 70px; padding: 30px; background-color: ghostwhite; border: 5px solid #ddd; border-radius: 50px;">
+		<div class="col-md-12">
+			<div class="form-horizontal">
+				@{
+					FlightRepository flightRepo = new FlightRepository();
+					SortRepository searchRepo = new SortRepository();
+					AirportRepository airportRepo = new AirportRepository();
+					List<Airport> airports = airportRepo.GetAllAirports();
+				}
+
+				@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+				<div class="form-group">
+					<label class="control-label col-md-2">From: </label>
+
+					<div class="col-md-10">
+						@{List<string> origins = new List<string>();
+						}
+
+						@foreach (var item in airports)
+						{
+							var origin = item.id;
+							var city = item.airport_name;
+							origins.Add(origin.ToString() + ", " + city);
+						}
+
+						@Html.DropDownListFor(model => model.origin, new SelectList(origins, "Text"),
+						  htmlAttributes: new { @class = "form-control select-add-placeholder" })
+						@Html.ValidationMessageFor(model => model.origin, "", new { @class = "text-danger" })
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label col-md-2">To: </label>
+					<div class="col-md-10">
+						@{List<string> destinations = new List<string>();
+						}
+						@foreach (var item in airports)
+						{
+							var destination = item.id;
+							var city = item.airport_name;
+							destinations.Add(destination.ToString() + ", " + city);
+						}
+						@Html.DropDownListFor(model => model.destination, new SelectList(destinations, "Text"),
+						  htmlAttributes: new { @class = "form-control select-add-placeholder" })
+
+						@Html.ValidationMessageFor(model => model.destination, "", new { @class = "text-danger" })
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-md-2">Date & Time: </label>
+					<div class="col-md-10">
+						@{
+							List<Flight> flights = flightRepo.GetAllFlights();
+							List<string> dates = new List<string>();
+						}
+						@foreach (var item in flights)
+						{
+							dates.Add(item.flight_date.ToString());
+						}
+						@Html.DropDownListFor(model => model.date, new SelectList(dates, "Text"),
+						  htmlAttributes: new { @class = "form-control select-add-placeholder" })
+						@Html.ValidationMessageFor(model => model.date, "", new { @class = "text-danger" })
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-md-2">Flight Type: </label>
+					<div class="col-md-10">
+						@{
+							List<string> flightTypes = new List<string>();
+							flightTypes.Add("One-Way");
+							flightTypes.Add("Round-Trip");
+						}
+						@Html.DropDownListFor(model => model.flightType, new SelectList(flightTypes, "Text"),
+						  htmlAttributes: new { @class = "form-control select-add-placeholder" })
+						@Html.ValidationMessageFor(model => model.flightType, "", new { @class = "text-danger" })
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-md-2">Sort Search By: </label>
+					<div class="col-md-10">
+						@{
+							SortRepository sortRepo = new SortRepository();
+							List<Sort> sorts = sortRepo.GetAllSortTypes();
+							List<string> sortTypes = new List<string>();
+							foreach (var item in sorts)
+							{
+								sortTypes.Add(item.id);
+							}
+						}
+						@Html.DropDownListFor(model => model.shortBy_Id, new SelectList(sortTypes, "Text"),
+						  htmlAttributes: new { @class = "form-control select-add-placeholder" })
+						@Html.ValidationMessageFor(model => model.shortBy_Id, "", new { @class = "text-danger" })
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-md-2">Class Type: </label>
+					<div class="col-md-10">
+						@{
+							ClassTypeRepository classRepo = new ClassTypeRepository();
+							List<ClassType> classes = classRepo.GetAllClassTypes();
+							List<string> classTypes = new List<string>();
+							//classTypes.Add(null);
+							foreach (var item in classes)
+							{
+								classTypes.Add(item.id);
+							}
+						}
+						@Html.DropDownListFor(model => model.classType, new SelectList(classTypes, "Text"),
+						  htmlAttributes: new { @class = "form-control select-add-placeholder" })
+						@Html.ValidationMessageFor(model => model.classType, "", new { @class = "text-danger" })
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-md-offset-2 col-md-10 ">
+						<input type="submit" value="Search" class="btn btn-primary" style="width: 190px; height: 50px " />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+}
+
+<div style="width:max-content; margin-top: 20px">
+	<button class="btn btn-default" style="color: white; font-weight: bold">@Html.ActionLink("<= Back To Home Page", "Index", "Home")</button>
+</div>
+
+@section Scripts {
+	@Scripts.Render("~/bundles/jqueryval")
+	<script type="text/javascript">
+		$(".select-add-placeholder").prepend("<option value='' disabled selected>Select an option...</option>");
+	</script>
+}

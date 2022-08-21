@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+@*<div class="col-md-12">
+	<h1>FlightBooker</h1>
+	<p class="lead">FlightBooker is a free webservice for booking your flight from anywhere.</p>
+</div>*@
+
+<!-- Showcase Section -->
+<section class="text-center" style="background-image: url('/images/showcase.jpg'); background-position: center; background-size: cover; padding: 250px; color: white">
+		<h1>Affordable Professional Flight Reservation Webservice</h1>
+		<h3>
+			You can book your favorite flight no matter where you are and at anytime you want.
+		</h3>
+
+		@*<p><img class="" src="~/images/airplanephoto.jpg" alt="" /></p>*@
+		<p class="btn btn-primary btn-lg" style="background-color: white; margin-top: 20px">
+			@Html.ActionLink("Brows Your Best Flight", "Index", "Flights")
+		</p>
+</section>

@@ -1,0 +1,171 @@
+﻿@using System.Collections
+@using FlightBooker.DAL
+@using FlightBooker.Buisness
+
+@{
+	ViewBag.Title = "ViewReports";
+	Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@{
+	ReservationRepository reservationRepo = new ReservationRepository();
+	FlightRepository flightRepo = new FlightRepository();
+	PassengerRepository passengerRepo = new PassengerRepository();
+	FlightReservationRepository flightReservationRepo = new FlightReservationRepository();
+	ReservationHistoryRepository reservationHistoryRepo = new ReservationHistoryRepository();
+	int totalReservations = reservationRepo.TotalNumOfReservation();
+	int totalFlights = flightRepo.TotalCount();
+	int totalPassenger = passengerRepo.TotalPassengers();
+	double totalPrice = flightReservationRepo.TotalPrice();
+	int totalReservationsByCustomers = reservationHistoryRepo.TotalNumOfReservations();
+	List<Flight> flights = flightRepo.GetAllFlights();
+}
+
+<div class="page-header">
+	<div class="row" style="padding-left: 50px">
+		<h2>Reports Page</h2>
+		<h4>A Report That Summarize The Overall Activities and Transactions Occured Using FlightBooker Website</h4>
+		<hr style="border-block-color: black" />
+	</div>
+</div>
+
+
+<div class="container" style="margin-bottom: 50px; margin-top: 50px">
+
+	<div class="row" style="margin-top: 40px">
+		<div class="col-md-3">
+			<div class="card" style=" border: 2px solid gray; padding: 10px; text-align: center; font-size: small; background-color: aliceblue;">
+				<div class="card-body">
+					<h3 class="card-title">Flights No Report</h3>
+					<hr style="border-block-color: inherit;" />
+					<h4 class="card-text">The overall number of flights avaialble for booking in the website are </h4>
+					<p style=" font-size: initial; background-color: darkgray; padding: 10px; }">@totalFlights Flights</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="card" style=" border: 2px solid gray; padding: 10px; text-align: center; font-size: small; background-color: aliceblue;">
+				<div class="card-body">
+					<h3 class="card-title">Reservations Report</h3>
+					<hr style="border-block-color: inherit;" />
+					<h4 class="card-text">The total number of reservations done using the website are </h4>
+					<p style=" font-size: initial; background-color: darkgray; padding: 10px; }">@totalReservations Reservations</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="card" style=" border: 2px solid gray; padding: 10px; text-align: center; font-size: small; background-color: aliceblue;">
+				<div class="card-body">
+					<h3 class="card-title">Passengers Report</h3>
+					<hr style="border-block-color: inherit;" />
+					<h4 class="card-text">The total number of passengers who used the website for booking </h4>
+					<p style=" font-size: initial; background-color: darkgray; padding: 10px; }">@totalPassenger Reservations</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="card" style=" border: 2px solid gray; padding: 10px; text-align: center; font-size: small; background-color: aliceblue;">
+				<div class="card-body">
+					<h3 class="card-title">Customer Report</h3>
+					<hr style="border-block-color: inherit;" />
+					<h4 class="card-text">The total number of registered users' reservations using the website </h4>
+					<p style=" font-size: initial; background-color: darkgray; padding: 10px;">@totalReservationsByCustomers Reservations</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+
+<div class="container" id="printdiv" style="margin-top: 20px; margin-bottom: 20px;">
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://code.highcharts.com/modules/exporting.js"></script>
+	<script src="https://code.highcharts.com/modules/export-data.js"></script>
+	<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+	<div class="row">
+		<div class="col-md-12">
+			<figure class="highcharts-figure" id="container">
+				<div >
+					<h2>Report Bar Chart</h2>
+					<hr />
+				</div>
+				<p class="highcharts-description">
+					Bar chart showing horizontal columns. This chart demonstrates the transactions occured by the website including
+					reports regarding flights, reservations, passengers, and registered users.
+				</p>
+			</figure>
+			<hr />
+		</div>
+	</div>
+</div>
+
+<div class="container" style="margin-bottom: 200px;">
+	<input style="float: right" class="btn btn-primary" type="submit" name="print" value="Print Report" onclick="printContent();" />
+</div>
+
+<script type="text/javascript">
+	Highcharts.chart('container', {
+		chart: {
+			type: 'bar'
+		},
+		title: {
+			text: 'FlightBooker Activities Report'
+		},
+		subtitle: {
+			text: 'Source: FlightBookerAgency.com'
+		},
+		xAxis: {
+			categories: ['Flights', 'Reservations', 'Passengers', 'Registered Users'],
+			title: {
+				text: null
+			}
+		},
+		yAxis: {
+			min: 0,
+			title: {
+				text: 'Total Number in (Units)',
+				align: 'high'
+			},
+			labels: {
+				overflow: 'justify'
+			}
+		},
+		tooltip: {
+			valueSuffix: ' Unit'
+		},
+		plotOptions: {
+			bar: {
+				dataLabels: {
+					enabled: true
+				}
+			}
+		},
+		legend: {
+			layout: 'vertical',
+			align: 'right',
+			verticalAlign: 'top',
+			x: -40,
+			y: 80,
+			floating: true,
+			borderWidth: 1,
+			backgroundColor:
+				Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
+			shadow: true
+		},
+		credits: {
+			enabled: false
+		},
+		series: [{
+			name: 'Year 2021',
+			data: [@totalFlights, @totalReservations, @totalPassenger, @totalReservationsByCustomers]
+		}]
+	});
+
+	function printContent() {
+		var printContents = document.getElementById('printdiv').innerHTML;
+		var colors = document.getElementById('printdiv').style = '{ -webkit-print-color-adjust: exact; }';
+		var originalContents = document.body.innerHTML;
+		document.body.innerHTML = printContents;
+		window.print();
+		document.body.innerHTML = originalContents;
+	}
+</script>

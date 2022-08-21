@@ -1,0 +1,58 @@
+﻿@model IEnumerable<FlightBooker.DAL.Customer>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="page-header">
+	<h2>Customer Details</h2>
+</div>
+
+<div class="row">
+
+    <table class="table">
+        <tr style="background-color: lightgray">
+            <th>
+                First Name
+            </th>
+            <th>
+                Last Name
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Password
+            </th>
+
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.first_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.last_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.password)
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.id })
+            </td>
+        </tr>
+    }
+
+    </table>
+
+    <p class="btn btn-default" style="font-weight: bold">@Html.ActionLink("Back To Main Dashboard", "Index", "Admin")</p>
+
+</div>

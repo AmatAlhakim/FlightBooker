@@ -1,0 +1,161 @@
+﻿@model IEnumerable<FlightBooker.DAL.Itinerary>
+
+@{
+	ViewBag.Title = "ConfirmationItinerary";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+	string bookingNo = "";
+	foreach (var item in Model)
+	{
+		bookingNo = "FBNKXI-" + item.id;
+		break;
+	}
+}
+<div class="container" id="printdiv" >
+	<div class="row" style="margin-bottom: 30px; background-color: #3366cc; ">
+		<div class="col-md-12">
+			<div style="float: right;">
+				<h2 style="color: #142952; ">FlightBooker Agency</h2>
+			</div>
+		</div>
+	</div>
+	<div class="row" style="margin-bottom: 30px">
+		<div class="col-md-12">
+			<h3 style="align-content: flex-start; font-weight: bold; float:left">YOUR TICKET-ITINERARY</h3>
+			<h5 style="float:right; padding-top: 15px">
+				YOUR BOOKING NUMBER: <span style="background-color: #99b3e6; color: black; font-weight: bold; padding: 4px">@bookingNo</span>
+			</h5>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<table class="table">
+				<tr style="background-color: #99b3e6; font-weight: bold;">
+					<th>
+						@Html.DisplayNameFor(model => model.Flight)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.From)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.To)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.Aircraft)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.Status)
+					</th>
+				</tr>
+				@foreach (var item in Model)
+				{
+					<tr>
+						<td>
+							@Html.DisplayFor(modelItem => item.Flight)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.From)
+							@Html.DisplayFor(modelItem => item.From_Date)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.To)
+							@Html.DisplayFor(modelItem => item.To_Date)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.Aircraft)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.Status)
+						</td>
+					</tr>
+				}
+			</table>
+		</div>
+	</div>
+
+	<div class="row" style="margin-top: 30px">
+		<div class="col-md-12">
+			<table class="table">
+				<tr style=" background-color: #99b3e6; font-weight: bold;">
+					<th>
+						@Html.DisplayNameFor(model => model.Passenger_Name)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.Ticket_Number)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.Flyer_Number)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.Special_Needs)
+					</th>
+					<th></th>
+				</tr>
+				@foreach (var item in Model)
+				{
+					<tr>
+						<td>
+							@Html.DisplayFor(modelItem => item.Passenger_Name)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.Ticket_Number)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.Flyer_Number)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.Special_Needs)
+						</td>
+					</tr>
+				}
+			</table>
+		</div>
+	</div>
+	@{
+		double totalCost = 0;
+		foreach (var item in Model)
+		{
+			totalCost += (double)item.Total_Cost;
+		}
+	}
+
+	<div class="row" style="margin-top: 30px">
+		<div class="col-md-12">
+			<table class="table">
+				<tr style=" background-color: #99b3e6; font-weight: bold;">
+					<th>
+						@Html.DisplayNameFor(model => model.Total_Cost)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.Currency)
+					</th>
+				</tr>
+				<tr>
+					<td>
+						@totalCost.ToString()
+					</td>
+					<td>
+						BHD
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+	<input style="float: right; font-weight: bold; width: 150px; height: 40px; background-color: lavender; border-radius: 20px;" type="submit" name="print" value="Print Ticket" onclick="printContent();" />
+</div>
+
+<script type="text/javascript">
+	function printContent() {
+		var printContents = document.getElementById('printdiv').innerHTML;
+		var colors = document.getElementById('printdiv').style = '{ -webkit-print-color-adjust: exact; }';
+		var originalContents = document.body.innerHTML;
+		document.body.innerHTML = printContents;
+		window.print();
+		document.body.innerHTML = originalContents;
+	}
+</script>

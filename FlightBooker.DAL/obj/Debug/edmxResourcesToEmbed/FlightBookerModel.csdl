@@ -1,0 +1,660 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FlightBookerDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="FlightBookerDb" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(FlightBookerDbModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(FlightBookerDbModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <EntitySet Name="C__MigrationHistory" EntityType="FlightBookerDbModel.C__MigrationHistory" />
+    <EntitySet Name="Aircraft" EntityType="FlightBookerDbModel.Aircraft" />
+    <EntitySet Name="Airlines" EntityType="FlightBookerDbModel.Airline" />
+    <EntitySet Name="Airports" EntityType="FlightBookerDbModel.Airport" />
+    <EntitySet Name="AspNetRoles" EntityType="FlightBookerDbModel.AspNetRole" />
+    <EntitySet Name="AspNetUserClaims" EntityType="FlightBookerDbModel.AspNetUserClaim" />
+    <EntitySet Name="AspNetUserLogins" EntityType="FlightBookerDbModel.AspNetUserLogin" />
+    <EntitySet Name="AspNetUsers" EntityType="FlightBookerDbModel.AspNetUser" />
+    <EntitySet Name="Countries" EntityType="FlightBookerDbModel.Country" />
+    <EntitySet Name="Customers" EntityType="FlightBookerDbModel.Customer" />
+    <EntitySet Name="Flights" EntityType="FlightBookerDbModel.Flight" />
+    <EntitySet Name="Passenger_Reservation" EntityType="FlightBookerDbModel.Passenger_Reservation" />
+    <EntitySet Name="Payments" EntityType="FlightBookerDbModel.Payment" />
+    <EntitySet Name="Reservations" EntityType="FlightBookerDbModel.Reservation" />
+    <EntitySet Name="Reservation_History" EntityType="FlightBookerDbModel.Reservation_History" />
+    <EntitySet Name="sysdiagrams" EntityType="FlightBookerDbModel.sysdiagram" />
+    <AssociationSet Name="FK_Flight_Aircraft" Association="FlightBookerDbModel.FK_Flight_Aircraft">
+      <End Role="Aircraft" EntitySet="Aircraft" />
+      <End Role="Flight" EntitySet="Flights" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Airline_Country" Association="FlightBookerDbModel.FK_Airline_Country">
+      <End Role="Country" EntitySet="Countries" />
+      <End Role="Airline" EntitySet="Airlines" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Flight_Airline" Association="FlightBookerDbModel.FK_Flight_Airline">
+      <End Role="Airline" EntitySet="Airlines" />
+      <End Role="Flight" EntitySet="Flights" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Airport_Country" Association="FlightBookerDbModel.FK_Airport_Country">
+      <End Role="Country" EntitySet="Countries" />
+      <End Role="Airport" EntitySet="Airports" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Flight_Airport" Association="FlightBookerDbModel.FK_Flight_Airport">
+      <End Role="Airport" EntitySet="Airports" />
+      <End Role="Flight" EntitySet="Flights" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="FlightBookerDbModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="FlightBookerDbModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reservation_History_Customer" Association="FlightBookerDbModel.FK_Reservation_History_Customer">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="Reservation_History" EntitySet="Reservation_History" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Passenger_Reservation_Reservation" Association="FlightBookerDbModel.FK_Passenger_Reservation_Reservation">
+      <End Role="Reservation" EntitySet="Reservations" />
+      <End Role="Passenger_Reservation" EntitySet="Passenger_Reservation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reservation_History_Reservation" Association="FlightBookerDbModel.FK_Reservation_History_Reservation">
+      <End Role="Reservation" EntitySet="Reservations" />
+      <End Role="Reservation_History" EntitySet="Reservation_History" />
+    </AssociationSet>
+    <AssociationSet Name="AspNetUserRoles" Association="FlightBookerDbModel.AspNetUserRoles">
+      <End Role="AspNetRole" EntitySet="AspNetRoles" />
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+    </AssociationSet>
+    <EntitySet Name="Sorts" EntityType="FlightBookerDbModel.Sort" />
+    <EntitySet Name="Flight_Reservation" EntityType="FlightBookerDbModel.Flight_Reservation" />
+    <EntitySet Name="Payment_Details" EntityType="FlightBookerDbModel.Payment_Details" />
+    <AssociationSet Name="FK_Flight_Reservation_Flight" Association="FlightBookerDbModel.FK_Flight_Reservation_Flight">
+      <End Role="Flight" EntitySet="Flights" />
+      <End Role="Flight_Reservation" EntitySet="Flight_Reservation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Flight_Reservation_Reservation" Association="FlightBookerDbModel.FK_Flight_Reservation_Reservation">
+      <End Role="Reservation" EntitySet="Reservations" />
+      <End Role="Flight_Reservation" EntitySet="Flight_Reservation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Payment_Details_Flight_Reservation" Association="FlightBookerDbModel.FK_Payment_Details_Flight_Reservation">
+      <End Role="Flight_Reservation" EntitySet="Flight_Reservation" />
+      <End Role="Payment_Details" EntitySet="Payment_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Payment_Details_Payment" Association="FlightBookerDbModel.FK_Payment_Details_Payment">
+      <End Role="Payment" EntitySet="Payments" />
+      <End Role="Payment_Details" EntitySet="Payment_Details" />
+    </AssociationSet>
+    <EntitySet Name="ClassTypes" EntityType="FlightBookerDbModel.ClassType" />
+    <EntitySet Name="Passengers" EntityType="FlightBookerDbModel.Passenger" />
+    <AssociationSet Name="FK_Passenger_Reservation_Passenger" Association="FlightBookerDbModel.FK_Passenger_Reservation_Passenger">
+      <End Role="Passenger" EntitySet="Passengers" />
+      <End Role="Passenger_Reservation" EntitySet="Passenger_Reservation" />
+    </AssociationSet>
+    <EntitySet Name="Searches" EntityType="FlightBookerDbModel.Search" />
+    <AssociationSet Name="FK_Search_ClassType" Association="FlightBookerDbModel.FK_Search_ClassType">
+      <End Role="ClassType" EntitySet="ClassTypes" />
+      <End Role="Search" EntitySet="Searches" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Search_Sort" Association="FlightBookerDbModel.FK_Search_Sort">
+      <End Role="Sort" EntitySet="Sorts" />
+      <End Role="Search" EntitySet="Searches" />
+    </AssociationSet>
+    <EntitySet Name="ReportViews" EntityType="FlightBookerDbModel.ReportView" />
+    <EntitySet Name="Itineraries" EntityType="FlightBookerDbModel.Itinerary" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Aircraft">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="aircraft_name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="icao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Flights" Relationship="FlightBookerDbModel.FK_Flight_Aircraft" FromRole="Aircraft" ToRole="Flight" />
+  </EntityType>
+  <EntityType Name="Airline">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="airline_name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="country_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="icao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Country" Relationship="FlightBookerDbModel.FK_Airline_Country" FromRole="Airline" ToRole="Country" />
+    <NavigationProperty Name="Flights" Relationship="FlightBookerDbModel.FK_Flight_Airline" FromRole="Airline" ToRole="Flight" />
+  </EntityType>
+  <EntityType Name="Airport">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="airport_name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="city" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="country_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="icao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Country" Relationship="FlightBookerDbModel.FK_Airport_Country" FromRole="Airport" ToRole="Country" />
+    <NavigationProperty Name="Flights" Relationship="FlightBookerDbModel.FK_Flight_Airport" FromRole="Airport" ToRole="Flight" />
+  </EntityType>
+  <EntityType Name="AspNetRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="FlightBookerDbModel.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaim">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="FlightBookerDbModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaim" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogin">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="FlightBookerDbModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogin" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUserClaims" Relationship="FlightBookerDbModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
+    <NavigationProperty Name="AspNetUserLogins" Relationship="FlightBookerDbModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
+    <NavigationProperty Name="AspNetRoles" Relationship="FlightBookerDbModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="country_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="icao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Airlines" Relationship="FlightBookerDbModel.FK_Airline_Country" FromRole="Country" ToRole="Airline" />
+    <NavigationProperty Name="Airports" Relationship="FlightBookerDbModel.FK_Airport_Country" FromRole="Country" ToRole="Airport" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="first_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="last_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="user_id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Reservation_History" Relationship="FlightBookerDbModel.FK_Reservation_History_Customer" FromRole="Customer" ToRole="Reservation_History" />
+  </EntityType>
+  <EntityType Name="Flight">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="flight_number" Type="Int32" />
+    <Property Name="origin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="destination" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="flight_date" Type="DateTime" Precision="3" />
+    <Property Name="duration" Type="Decimal" Precision="8" Scale="2" />
+    <Property Name="airport_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="airline_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="aircraft_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="stopover_duration" Type="Decimal" Precision="3" Scale="2" />
+    <Property Name="via" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="available_seats" Type="Int32" />
+    <Property Name="allowedd_buggage_weight" Type="Int32" />
+    <Property Name="econ_price" Type="Decimal" Precision="8" Scale="2" />
+    <Property Name="bus_price" Type="Decimal" Precision="8" Scale="2" />
+    <NavigationProperty Name="Aircraft" Relationship="FlightBookerDbModel.FK_Flight_Aircraft" FromRole="Flight" ToRole="Aircraft" />
+    <NavigationProperty Name="Airline" Relationship="FlightBookerDbModel.FK_Flight_Airline" FromRole="Flight" ToRole="Airline" />
+    <NavigationProperty Name="Airport" Relationship="FlightBookerDbModel.FK_Flight_Airport" FromRole="Flight" ToRole="Airport" />
+    <NavigationProperty Name="Flight_Reservation" Relationship="FlightBookerDbModel.FK_Flight_Reservation_Flight" FromRole="Flight" ToRole="Flight_Reservation" />
+  </EntityType>
+  <EntityType Name="Passenger_Reservation">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="passenger_id" Type="Int32" />
+    <Property Name="reservation_id" Type="Int32" />
+    <NavigationProperty Name="Reservation" Relationship="FlightBookerDbModel.FK_Passenger_Reservation_Reservation" FromRole="Passenger_Reservation" ToRole="Reservation" />
+    <NavigationProperty Name="Passenger" Relationship="FlightBookerDbModel.FK_Passenger_Reservation_Passenger" FromRole="Passenger_Reservation" ToRole="Passenger" />
+  </EntityType>
+  <EntityType Name="Payment">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="holder_name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="card_number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="card_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Payment_Details" Relationship="FlightBookerDbModel.FK_Payment_Details_Payment" FromRole="Payment" ToRole="Payment_Details" />
+  </EntityType>
+  <EntityType Name="Reservation">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="reservation_date" Type="DateTime" Precision="3" />
+    <Property Name="reservation_status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="num_of_passengers" Type="Int32" />
+    <NavigationProperty Name="Passenger_Reservation" Relationship="FlightBookerDbModel.FK_Passenger_Reservation_Reservation" FromRole="Reservation" ToRole="Passenger_Reservation" />
+    <NavigationProperty Name="Reservation_History" Relationship="FlightBookerDbModel.FK_Reservation_History_Reservation" FromRole="Reservation" ToRole="Reservation_History" />
+    <NavigationProperty Name="Flight_Reservation" Relationship="FlightBookerDbModel.FK_Flight_Reservation_Reservation" FromRole="Reservation" ToRole="Flight_Reservation" />
+  </EntityType>
+  <EntityType Name="Reservation_History">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="reservation_id" Type="Int32" />
+    <Property Name="customer_id" Type="Int32" />
+    <NavigationProperty Name="Customer" Relationship="FlightBookerDbModel.FK_Reservation_History_Customer" FromRole="Reservation_History" ToRole="Customer" />
+    <NavigationProperty Name="Reservation" Relationship="FlightBookerDbModel.FK_Reservation_History_Reservation" FromRole="Reservation_History" ToRole="Reservation" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_Flight_Aircraft">
+    <End Type="FlightBookerDbModel.Aircraft" Role="Aircraft" Multiplicity="0..1" />
+    <End Type="FlightBookerDbModel.Flight" Role="Flight" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Aircraft">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Flight">
+        <PropertyRef Name="aircraft_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Airline_Country">
+    <End Type="FlightBookerDbModel.Country" Role="Country" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="FlightBookerDbModel.Airline" Role="Airline" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Airline">
+        <PropertyRef Name="country_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Flight_Airline">
+    <End Type="FlightBookerDbModel.Airline" Role="Airline" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="FlightBookerDbModel.Flight" Role="Flight" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Airline">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Flight">
+        <PropertyRef Name="airline_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Airport_Country">
+    <End Type="FlightBookerDbModel.Country" Role="Country" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="FlightBookerDbModel.Airport" Role="Airport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Airport">
+        <PropertyRef Name="country_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Flight_Airport">
+    <End Type="FlightBookerDbModel.Airport" Role="Airport" Multiplicity="0..1" />
+    <End Type="FlightBookerDbModel.Flight" Role="Flight" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Airport">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Flight">
+        <PropertyRef Name="airport_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Type="FlightBookerDbModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="FlightBookerDbModel.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaim">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Type="FlightBookerDbModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="FlightBookerDbModel.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogin">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reservation_History_Customer">
+    <End Type="FlightBookerDbModel.Customer" Role="Customer" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="FlightBookerDbModel.Reservation_History" Role="Reservation_History" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Reservation_History">
+        <PropertyRef Name="customer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Passenger_Reservation_Reservation">
+    <End Type="FlightBookerDbModel.Reservation" Role="Reservation" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="FlightBookerDbModel.Passenger_Reservation" Role="Passenger_Reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Reservation">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Passenger_Reservation">
+        <PropertyRef Name="reservation_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reservation_History_Reservation">
+    <End Type="FlightBookerDbModel.Reservation" Role="Reservation" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="FlightBookerDbModel.Reservation_History" Role="Reservation_History" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Reservation">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Reservation_History">
+        <PropertyRef Name="reservation_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AspNetUserRoles">
+    <End Type="FlightBookerDbModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
+    <End Type="FlightBookerDbModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+  </Association>
+  <EntityType Name="Sort">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="sortBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Searches" Relationship="FlightBookerDbModel.FK_Search_Sort" FromRole="Sort" ToRole="Search" />
+  </EntityType>
+  <EntityType Name="Flight_Reservation">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="reservation_id" Type="Int32" />
+    <Property Name="flight_id" Type="Int32" />
+    <Property Name="price" Type="Decimal" Precision="18" Scale="3" />
+    <NavigationProperty Name="Flight" Relationship="FlightBookerDbModel.FK_Flight_Reservation_Flight" FromRole="Flight_Reservation" ToRole="Flight" />
+    <NavigationProperty Name="Reservation" Relationship="FlightBookerDbModel.FK_Flight_Reservation_Reservation" FromRole="Flight_Reservation" ToRole="Reservation" />
+    <NavigationProperty Name="Payment_Details" Relationship="FlightBookerDbModel.FK_Payment_Details_Flight_Reservation" FromRole="Flight_Reservation" ToRole="Payment_Details" />
+  </EntityType>
+  <EntityType Name="Payment_Details">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="payment_id" Type="Int32" />
+    <Property Name="flight_reservation_id" Type="Int32" />
+    <Property Name="amount" Type="Decimal" Precision="18" Scale="3" />
+    <NavigationProperty Name="Flight_Reservation" Relationship="FlightBookerDbModel.FK_Payment_Details_Flight_Reservation" FromRole="Payment_Details" ToRole="Flight_Reservation" />
+    <NavigationProperty Name="Payment" Relationship="FlightBookerDbModel.FK_Payment_Details_Payment" FromRole="Payment_Details" ToRole="Payment" />
+  </EntityType>
+  <Association Name="FK_Flight_Reservation_Flight">
+    <End Type="FlightBookerDbModel.Flight" Role="Flight" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="FlightBookerDbModel.Flight_Reservation" Role="Flight_Reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Flight">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Flight_Reservation">
+        <PropertyRef Name="flight_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Flight_Reservation_Reservation">
+    <End Type="FlightBookerDbModel.Reservation" Role="Reservation" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="FlightBookerDbModel.Flight_Reservation" Role="Flight_Reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Reservation">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Flight_Reservation">
+        <PropertyRef Name="reservation_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Payment_Details_Flight_Reservation">
+    <End Type="FlightBookerDbModel.Flight_Reservation" Role="Flight_Reservation" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="FlightBookerDbModel.Payment_Details" Role="Payment_Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Flight_Reservation">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Payment_Details">
+        <PropertyRef Name="flight_reservation_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Payment_Details_Payment">
+    <End Type="FlightBookerDbModel.Payment" Role="Payment" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="FlightBookerDbModel.Payment_Details" Role="Payment_Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Payment">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Payment_Details">
+        <PropertyRef Name="payment_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ClassType">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="classType1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Searches" Relationship="FlightBookerDbModel.FK_Search_ClassType" FromRole="ClassType" ToRole="Search" />
+  </EntityType>
+  <EntityType Name="Passenger">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="first_name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="last_name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="passport_number" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Age_Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Passenger_Reservation" Relationship="FlightBookerDbModel.FK_Passenger_Reservation_Passenger" FromRole="Passenger" ToRole="Passenger_Reservation" />
+  </EntityType>
+  <Association Name="FK_Passenger_Reservation_Passenger">
+    <End Type="FlightBookerDbModel.Passenger" Role="Passenger" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="FlightBookerDbModel.Passenger_Reservation" Role="Passenger_Reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Passenger">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Passenger_Reservation">
+        <PropertyRef Name="passenger_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Search">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="origin" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="destination" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="date" Type="DateTime" Precision="3" />
+    <Property Name="flightType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="tripType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="shortBy_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="classType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ClassType1" Relationship="FlightBookerDbModel.FK_Search_ClassType" FromRole="Search" ToRole="ClassType" />
+    <NavigationProperty Name="Sort" Relationship="FlightBookerDbModel.FK_Search_Sort" FromRole="Search" ToRole="Sort" />
+  </EntityType>
+  <Association Name="FK_Search_ClassType">
+    <End Type="FlightBookerDbModel.ClassType" Role="ClassType" Multiplicity="1" />
+    <End Type="FlightBookerDbModel.Search" Role="Search" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClassType">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Search">
+        <PropertyRef Name="classType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Search_Sort">
+    <End Type="FlightBookerDbModel.Sort" Role="Sort" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="FlightBookerDbModel.Search" Role="Search" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sort">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Search">
+        <PropertyRef Name="shortBy_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ReportView">
+    <Key>
+      <PropertyRef Name="Reservation_ID" />
+    </Key>
+    <Property Name="Flight_No" Type="Int32" />
+    <Property Name="Reservation_ID" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Precision="18" Scale="3" />
+  </EntityType>
+  <EntityType Name="Itinerary">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="Flight" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="From" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="To" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Aircraft" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Passenger_Name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Ticket_Number" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Flyer_Number" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Special_Needs" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Total_Cost" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="From_Date" Type="DateTime" Precision="3" />
+    <Property Name="To_Date" Type="DateTime" Precision="3" />
+    <Property Name="Currency" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+</Schema>

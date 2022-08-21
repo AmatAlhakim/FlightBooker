@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>@ViewBag.Title - FlightBooker</title>
+
+	<link href="~/Content/Site.css" rel="stylesheet" />
+	@Styles.Render("~/Content/css")
+	@Scripts.Render("~/bundles/modernizr")
+
+</head>
+
+<body style="background-color: whitesmoke;">
+
+	<div class="navbar navbar-expand-lg bg-dark navbar-dark">
+		<div class="container" style=" padding-top: 20px; font-size: medium; padding-bottom: 20px; font-weight: bold">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" style="background-color: #b3cbe6">
+					<span class="icon-bar" style="background-color: white"></span>
+					<span class="icon-bar" style="background-color: white"></span>
+					<span class="icon-bar" style="background-color: white"></span>
+				</button>
+				<label class="navbar-btn" style="padding-right: 30px; font-size: large">@Html.ActionLink("FlightBooker", "Index", "Home")</label>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li>@Html.ActionLink("Home", "Index", "Home")</li>
+					<li>@Html.ActionLink("About", "About", "Home")</li>
+					<li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+					<li>@Html.ActionLink("Flights", "Index", "Flights")</li>
+				</ul>
+				@Html.Partial("_LoginPartial")
+			</div>
+		</div>
+	</div>
+
+	<hr style="border-block-color: darkblue" />
+
+	<div class="body-content">
+		@*Display the message*@
+		@if (TempData["SuccessMessage"] != null)
+		{
+			<div class="alert alert-success">
+				@TempData["SuccessMessage"].ToString();
+			</div>
+		}
+		@RenderBody()
+		<hr />
+		<footer style=" background-color: darkslateblue; padding: 40px; text-align: center; font-size: small; color: wheat;">
+			<span>&copy; @DateTime.Now.Year - All Rights Reserved To FlightBooker</span>
+		</footer>
+	</div>
+
+	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/bootstrap")
+	@RenderSection("scripts", required: false)
+</body>
+</html>

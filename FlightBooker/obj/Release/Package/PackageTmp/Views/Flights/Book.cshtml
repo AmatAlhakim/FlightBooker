@@ -1,0 +1,136 @@
+﻿@model FlightBooker.DAL.Flight
+@{
+	ViewBag.Title = "Book";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2 style="color: #8572e6">Flight Details</h2>
+<hr style="border-block-color: darkblue" />
+<div class="row">
+	<div class="col-md-12">
+		<dl class="dl-horizontal">
+			<dt>
+				<label>Flight Number:</label>
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.flight_number)
+			</dd>
+			<dt>
+				<label>Origin</label>
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.origin)
+			</dd>
+			<dt>
+				<label>Destination</label>
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.destination)
+			</dd>
+			<dt>
+				<label>Flight Date</label>
+			</dt>
+
+			<dd>
+				@Html.DisplayFor(model => model.flight_date)
+			</dd>
+
+			<dt>
+				<label>Duration: </label>
+			</dt>
+
+			<dd>
+				@Html.DisplayFor(model => model.duration)
+			</dd>
+
+			<dt>
+				<label>Airport ID: </label>
+			</dt>
+
+			<dd>
+				@Html.DisplayFor(model => model.airport_id)
+			</dd>
+
+			<dt>
+				<label>Airline ID: </label>
+			</dt>
+
+			<dd>
+				@Html.DisplayFor(model => model.airline_id)
+			</dd>
+
+			<dt>
+				<label>Aircraft ID: </label>
+			</dt>
+
+			<dd>
+				@Html.DisplayFor(model => model.aircraft_id)
+			</dd>
+
+			<dt>
+				<label>Stopover Duration: </label>
+			</dt>
+
+			<dd>
+				@Html.DisplayFor(model => model.stopover_duration)
+			</dd>
+			<dt>
+				<label>VIA: </label>
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.via)
+			</dd>
+			<dt>
+				<label>Available Seats</label>
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.available_seats)
+			</dd>
+			<dt>
+				<label>Allowed Buggage Weight in Kg: </label>
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.allowedd_buggage_weight)
+			</dd>
+
+			<dt>
+				<label>Economy Price</label>
+			</dt>
+
+			<dd>
+				@Html.DisplayFor(model => model.econ_price)
+			</dd>
+
+			<dt>
+				<label>Business Price</label>
+			</dt>
+
+			<dd>
+				@Html.DisplayFor(model => model.bus_price)
+			</dd>
+		</dl>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-4" style="padding-right: 100px; margin-top: 20px">
+		<button class="btn btn-default" style="color: white; font-weight: bold">
+			@Html.ActionLink("<= Back To Search Result Page", "SearchResult", "Flights")
+		</button>
+	</div>
+	@{
+		string type = ViewBag.FlightType;
+			if (type != null && type.Equals("Round-Trip"))
+			{
+				<div class="col-md-4" style="margin-top: 20px;">
+					<button class="btn btn-danger" style=" background-color: white; font-weight: bold">
+						@Html.ActionLink("Book Return Flight", "ReturnFlight")
+					</button>
+				</div>
+			}
+	}
+	<div class="col-md-4" style="margin-top: 20px;">
+		<button class="btn btn-danger" style=" background-color: white; font-weight: bold">
+			@Html.ActionLink("Add A Passenger =>", "AddAPassenger")
+		</button>
+	</div>
+</div>
+

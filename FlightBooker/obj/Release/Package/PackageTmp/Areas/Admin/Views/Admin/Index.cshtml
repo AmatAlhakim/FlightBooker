@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="page-header">
+	<h1>Admin Dashboard</h1>
+</div>
+
+<div class="container" style="margin-bottom: 200px; margin-top: 100px">
+	<div class="row text-center">
+		<div class="col-md-4">
+			<div class="card text-primary">
+				<img class="img-rounded img-responsive center-block" style="width: 200px; height: 120px" src="~/images/airplaneicon.png" alt="Alternate Text" />
+				<br />
+				<div class="card-body">
+					<h2 class="modal-title">Manage Flights</h2>
+					<p class="panel-body">
+						Create new fight records, update an existing flight record, display the details of flights and
+						remove a flight schedule from the database.
+					</p>
+
+					<button type="button" class="btn btn-secondary">
+						@Html.ActionLink("Manage Flights", "Index", "Flight")
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-4">
+			
+			<div>
+
+				<div class="card text-primary">
+
+					<img class="img-rounded img-responsive center-block" style="width: 200px; height: 120px" src="~/images/userslogo.png" alt="Alternate Text" />
+					<br />
+
+					<div class="card-body">
+						<h2 class="modal-title">Manage Users</h2>
+						<p class="panel-body">
+							Create new user account, update an existing user account, display the dtails of
+							users and remove a user account from the database.
+						</p>
+						<button type="button" class="btn btn-secondary">
+							@Html.ActionLink("Manage Users", "Index", "ManageCustomer")
+						</button>
+					</div>
+				</div>
+			</div>			
+		</div>
+
+		<div class="col-md-4">
+
+
+
+			<div class="card text-primary">
+
+				<img class="img-rounded img-responsive center-block" style="width: 200px; height: 120px" src="~/images/reporticon.png" alt="Alternate Text" />
+				<br />
+
+				<div class="card-body">
+					<h2 class="modal-title">View Reports</h2>
+					<p class="panel-body">
+						See a summary of the total number of reservations, customers, flights, and prices.
+					</p>
+					<button type="button" class="btn btn-secondary">
+						@Html.ActionLink("View Reports", "ViewReports", "Admin")
+					</button>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+
+</div>

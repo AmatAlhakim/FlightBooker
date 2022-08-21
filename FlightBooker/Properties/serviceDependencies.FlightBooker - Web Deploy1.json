@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/flightbookerdbserver/databases/FlightBookerDb",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:DefaultConnection",
+      "secretStore": "AzureAppSettings"
+    },
+    "mssql2": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/flightbookerdbserver/databases/FlightBookerDb",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:FlightBookerDb",
+      "secretStore": "AzureAppSettings"
+    }
+  }
+}

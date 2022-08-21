@@ -1,0 +1,125 @@
+﻿@model IEnumerable<FlightBooker.DAL.Flight>
+@using FlightBooker.DAL
+@using FlightBooker.Buisness
+@using System.Collections;
+
+@{
+	ViewBag.Title = "Index";
+}
+
+<div class="page-header">
+
+	<h2>Flights Details</h2>
+	<p class="btn btn-default" style="font-weight:bold">@Html.ActionLink("Add New Flight", "Create", "Flight")</p>
+
+</div>
+
+<br />
+
+<div class="row">
+	<div class="col-lg-12 col-md-10 col-sm-6 col-xs-4">
+		<table class="table">
+			<tr class="header-row" style="background-color: lightgray" >
+				<th>
+					Flight Number
+				</th>
+				<th>
+					Origin
+				</th>
+				<th>
+					Destination
+				</th>
+				<th>
+					Date
+				</th>
+				<th>
+					Duration
+				</th>
+				<th>
+					Airport
+				</th>
+				<th>
+					Airline
+				</th>
+				<th>
+					Aircraft
+				</th>
+				<th>
+					Stopover Duration
+				</th>
+				<th>
+					VIA
+				</th>
+				<th>
+					Seats No
+				</th>
+				<th>
+					Buggage Weight
+				</th>
+				<th>
+					Economy Price
+				</th>
+				<th>
+					Business Price
+				</th>
+				<th></th>
+			</tr>
+
+			@foreach (var item in Model)
+			{
+				<tr>
+					<td>
+						@Html.DisplayFor(modelItem => item.flight_number)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.origin)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.destination)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.flight_date)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.duration)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.airport_id)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.airline_id)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.aircraft_id)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.stopover_duration)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.via)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.available_seats)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.allowedd_buggage_weight)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.econ_price)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.bus_price)
+					</td>
+					<td>
+						@Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+						@Html.ActionLink("Delete", "Delete", new { id = item.id })
+					</td>
+				</tr>
+			}
+
+		</table>
+
+		<p class="btn btn-default" style="font-weight: bold">@Html.ActionLink("Back To Main Dashboard", "Index", "Admin")</p>
+	</div>
+</div>
+

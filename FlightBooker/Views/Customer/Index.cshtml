@@ -1,0 +1,37 @@
+﻿@{
+	ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h3 style="color: #61a6e8; padding-left: 50px; font-weight: bold">@UserHelper.GetUserNameById(UserHelper.GetCurrentUserId()), Dashboard</h3>
+<div class="container" style="margin-top: 100px; margin-bottom: 200px;">
+	<div class="row" style="margin-bottom: 20px">
+		<div class="col-md-4">
+			@using (Html.BeginForm("ReservationHistory", "Customer", FormMethod.Post, new { onsubmit = "onFormSubmit()", @class = "form-horizontal", enctype = "multipart/form-data" }))
+			{
+				<div class="card" style="width: 18rem;">
+					<img class="card-img-top" src="~/images/history.png" style=" width: 250px; border: gray 5px solid;" alt="Reservation History Icon">
+					<div class="card-body">
+						<h4 class="card-title" style="float: left">Show Flights Reservations History</h4>
+						<input type="submit" value="View History"
+							   class="btn btn-primary" style="font-weight: bold; font-size: small;
+									background-color: darkgray;" />
+					</div>
+				</div>
+			}
+		</div>
+		<div class="col-md-4">
+			@using (Html.BeginForm("Index", "Manage", FormMethod.Post, new { onsubmit = "onFormSubmit()", @class = "form-horizontal", enctype = "multipart/form-data" }))
+			{
+				<div class="card" style="width: 18rem;">
+					<img class="card-img-top" src="~/images/password.png" style=" width: 250px; border: gray 5px solid;" alt="Reservation History Icon">
+					<div class="card-body">
+						<h4 class="card-title">Change Your Account Password</h4>
+						<input type="submit" value="Change Password"
+							   class="btn btn-primary" style="font-weight: bold; font-size: small;
+									background-color: darkgray; " />
+					</div>
+				</div>
+			}
+		</div>
+	</div>
+</div>

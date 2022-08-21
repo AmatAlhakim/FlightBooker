@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8a063c55af6748dcbfa844f05250acca" Name="Diagram1" ZoomLevel="95">
+        <EntityTypeShape EntityType="FlightBookerDbModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="11.375" />
+        <EntityTypeShape EntityType="FlightBookerDbModel.Aircraft" Width="1.5" PointX="3" PointY="1.875" />
+        <EntityTypeShape EntityType="FlightBookerDbModel.Airline" Width="1.5" PointX="3" PointY="5.125" />
+        <EntityTypeShape EntityType="FlightBookerDbModel.Airport" Width="1.5" PointX="3" PointY="8" />
+        <EntityTypeShape EntityType="FlightBookerDbModel.AspNetRole" Width="1.5" PointX="7.75" PointY="12.125" />
+        <EntityTypeShape EntityType="FlightBookerDbModel.AspNetUserClaim" Width="1.5" PointX="12.25" PointY="10.625" />
+        <EntityTypeShape EntityType="FlightBookerDbModel.AspNetUserLogin" Width="1.5" PointX="12.25" PointY="13.375" />
+        <EntityTypeShape EntityType="FlightBookerDbModel.AspNetUser" Width="1.5" PointX="10" PointY="11" />
+        <EntityTypeShape EntityType="FlightBookerDbModel.Country" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="FlightBookerDbModel.Customer" Width="1.5" PointX="8.25" PointY="15.875" />
+        <EntityTypeShape EntityType="FlightBookerDbModel.Flight" Width="1.5" PointX="5.25" PointY="5.375" />
+        <EntityTypeShape EntityType="FlightBookerDbModel.Passenger_Reservation" Width="1.5" PointX="7.5" PointY="0.75" />
+        <EntityTypeShape EntityType="FlightBookerDbModel.Payment" Width="1.5" PointX="7.5" PointY="3.75" />
+        <EntityTypeShape EntityType="FlightBookerDbModel.Reservation" Width="1.5" PointX="5.25" PointY="1.5" />
+        <EntityTypeShape EntityType="FlightBookerDbModel.Reservation_History" Width="1.5" PointX="10.5" PointY="1.75" />
+        <EntityTypeShape EntityType="FlightBookerDbModel.sysdiagram" Width="1.5" PointX="2.75" PointY="14.375" />
+        <AssociationConnector Association="FlightBookerDbModel.FK_Flight_Aircraft" />
+        <AssociationConnector Association="FlightBookerDbModel.FK_Airline_Country" />
+        <AssociationConnector Association="FlightBookerDbModel.FK_Flight_Airline" />
+        <AssociationConnector Association="FlightBookerDbModel.FK_Airport_Country" />
+        <AssociationConnector Association="FlightBookerDbModel.FK_Flight_Airport" />
+        <AssociationConnector Association="FlightBookerDbModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="FlightBookerDbModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="FlightBookerDbModel.FK_Reservation_History_Customer" />
+        <AssociationConnector Association="FlightBookerDbModel.FK_Passenger_Reservation_Reservation" />
+        <AssociationConnector Association="FlightBookerDbModel.FK_Reservation_History_Reservation" />
+        <AssociationConnector Association="FlightBookerDbModel.AspNetUserRoles" />
+        <EntityTypeShape EntityType="FlightBookerDbModel.Sort" Width="1.5" PointX="12.375" PointY="5.375" />
+        <EntityTypeShape EntityType="FlightBookerDbModel.Flight_Reservation" Width="1.5" PointX="7.5" PointY="6.625" />
+        <EntityTypeShape EntityType="FlightBookerDbModel.Payment_Details" Width="1.5" PointX="9.75" PointY="5.25" />
+        <AssociationConnector Association="FlightBookerDbModel.FK_Flight_Reservation_Flight" />
+        <AssociationConnector Association="FlightBookerDbModel.FK_Flight_Reservation_Reservation" />
+        <AssociationConnector Association="FlightBookerDbModel.FK_Payment_Details_Flight_Reservation" />
+        <AssociationConnector Association="FlightBookerDbModel.FK_Payment_Details_Payment" />
+        <EntityTypeShape EntityType="FlightBookerDbModel.ClassType" Width="1.5" PointX="13.375" PointY="1.625" />
+        <EntityTypeShape EntityType="FlightBookerDbModel.Passenger" Width="1.5" PointX="14.375" PointY="7" />
+        <AssociationConnector Association="FlightBookerDbModel.FK_Passenger_Reservation_Passenger" />
+        <EntityTypeShape EntityType="FlightBookerDbModel.Search" Width="1.5" PointX="15.625" PointY="2.875" />
+        <AssociationConnector Association="FlightBookerDbModel.FK_Search_ClassType" />
+        <AssociationConnector Association="FlightBookerDbModel.FK_Search_Sort" />
+        <EntityTypeShape EntityType="FlightBookerDbModel.ReportView" Width="1.5" PointX="3.375" PointY="11.75" />
+        <EntityTypeShape EntityType="FlightBookerDbModel.Itinerary" Width="1.5" PointX="5.375" PointY="14.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

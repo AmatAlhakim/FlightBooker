@@ -1,0 +1,76 @@
+﻿@model IEnumerable<FlightBooker.DAL.Flight>
+
+@{
+	ViewBag.Title = "SearchResult";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="color: #8572e6">Search Result</h2>
+<h4>@ViewBag.SearchDetails</h4>
+<hr style="border-block-color: darkblue" />
+
+@using (Html.BeginForm("Book", "Flights", FormMethod.Post, new { onsubmit = "onFormSubmit()", @class = "form-horizontal", enctype = "multipart/form-data" }))
+{
+	@Html.AntiForgeryToken()
+
+	<div class="row">
+		<div class="col-md-12">
+			<table class="table">
+				<tr style="background-color: lightgray">
+					<th>
+						Origin
+					</th>
+					<th>
+						Destination
+					</th>
+					<th>
+						Flight Date
+					</th>
+					<th>
+						Price
+					</th>
+					<th>
+						Duration
+					</th>
+					<th></th>
+				</tr>
+				@foreach (var item in Model)
+				{
+					<tr>
+						<td>
+							@Html.DisplayFor(modelItem => item.origin)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.destination)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.flight_date)
+						</td>
+						<td>
+							@{
+								string classType = ViewBag.classType;
+								if (classType.Equals("Buisness"))
+								{
+									@Html.DisplayFor(modelItem => item.bus_price);
+								}
+								else
+								{
+									@Html.DisplayFor(modelItem => item.econ_price);
+								}
+							}
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.duration)
+						</td>
+						<td>
+							@Html.ActionLink("Flight Details", "Book", new { id = item.id })
+						</td>
+					</tr>
+				}
+			</table>
+		</div>
+	</div>
+}
+	<div style="width:max-content">
+		<button class="btn btn-default" style="color: white; font-weight: bold">@Html.ActionLink("<= Back To Search Page", "Index", "Flights")</button>
+	</div>
